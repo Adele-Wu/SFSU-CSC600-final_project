@@ -27,6 +27,8 @@ export const WaveformVisualizer = new Visualizer(
       const y = height / 2 + amplitude * height;
       // Place vertex
       p5.vertex(x, y);
+      // console.log("amp", amplitude);
+      console.log("y", y);
     }
     p5.endShape();
   },

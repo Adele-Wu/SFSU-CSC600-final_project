@@ -170,6 +170,7 @@ function Piano({ synth, setSynth }: InstrumentProps): JSX.Element {
         ))}
       </div>
     </div>
+    
   );
 }
 
