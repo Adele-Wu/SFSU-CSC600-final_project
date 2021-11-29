@@ -15,15 +15,12 @@ interface DrumsKeyProps {
     note: string; // C, Db, D, Eb, E, F, Gb, G, Ab, A, Bb, B
     duration?: string;
     synth?: Tone.Synth; // Contains library code for making sound
-    minor?: boolean; // True if minor key, false if major key
-    octave: number;
-    index: number; // octave + index together give a location for the Drums key
+    index: number; // give a location for the Drums key
 }
 
 export function DrumsKey({
     note,
     synth,
-    minor,
     index,
 }: DrumsKeyProps): JSX.Element {
     /**
@@ -36,65 +33,20 @@ export function DrumsKey({
         // 2. The JSX will be **transpiled** into the corresponding `React.createElement` library call.
         // 3. The curly braces `{` and `}` should remind you of string interpolation.
         <div
-            onMouseDown={() => synth?.triggerAttack(`${note}`)} // Question: what is `onMouseDown`?
-            onMouseUp={() => synth?.triggerRelease('+0.25')} // Question: what is `onMouseUp`?
-            className={classNames('ba pointer absolute dim', {
-                'bg-black black h3': minor, // minor keys are black
-                'black bg-white h4': !minor, // major keys are white
-            })}
+            onMouseDown={() => synth?.triggerAttackRelease(`${note}`, '8n')}
+            className={classNames('pointer absolute drum')}
             style={{
                 // CSS
-                // top: 0,
-                // left: `${index * 2}rem`,
-                // zIndex: minor ? 1 : 0,
-                // width: minor ? '1.5rem' : '2rem',
-                // marginLeft: minor ? '0.25rem' : 0,
                 padding: 10,
                 margin: 20,
+                backgroundColor: '#D2B48C',
                 display: "inline-block",
                 borderRadius: "50%",
                 width: 150,
                 height: 150,
-            }}
-        ></div>
-    );
-}
-
-// eslint-disable-next-line
-function DrumsKeyWithoutJSX({
-    note,
-    synth,
-    minor,
-    index,
-}: DrumsKeyProps): JSX.Element {
-    /**
-     * This React component for pedagogical purposes.
-     * See `DrumsKey` for the React component with JSX (JavaScript XML).
-     */
-    return React.createElement(
-        'div',
-        {
-            onMouseDown: () => synth?.triggerAttack(`${note}`),
-            onMouseUp: () => synth?.triggerRelease('+0.25'),
-            className: classNames('ba pointer absolute dim', {
-                'bg-black black h3': minor,
-                'black bg-white h4': !minor,
-            }),
-            style: {
-                top: 0,
-                left: `${index * 2}rem`,
-                zIndex: minor ? 1 : 0,
-                // width: minor ? '1.5rem' : '2rem',
-                marginLeft: minor ? '0.25rem' : 0,
-                
-                padding: 10,
-                margin: 20,
-                borderRadius: "50%",
-                width: 200,
-                height: 200,
-            },
-        },
-        [],
+                left: `${index * 10}rem`,
+                }}
+        ></div >
     );
 }
 
@@ -103,8 +55,6 @@ function DrumsType({ title, onClick, active }: any): JSX.Element {
         <div
             onClick={onClick}
             className={classNames('dim pointer ph2 pv1 ba mr2 br1 fw7 bw1', {
-                'b--black black': active,
-                'gray b--light-gray': !active,
             })}
         >
             {title}
@@ -114,30 +64,31 @@ function DrumsType({ title, onClick, active }: any): JSX.Element {
 
 function Drums({ synth, setSynth }: InstrumentProps): JSX.Element {
     const keys = List([
-        // { note: 'C', idx: 0 },
-        // { note: 'Db', idx: 0.5 },
-        // { note: 'D', idx: 1 },
-        // { note: 'Eb', idx: 1.5 },
-        // { note: 'E', idx: 2 },
-        // { note: 'F', idx: 3 },
-        // { note: 'Gb', idx: 3.5 },
-        // { note: 'G', idx: 4 },
-        // { note: 'Ab', idx: 4.5 },
-        // { note: 'A', idx: 5 },
-        // { note: 'Bb', idx: 5.5 },
-        // { note: 'B', idx: 6 },
-        { note: 'C', idx: 6 },
+        { note: 'A1', idx: 0 },
+        { note: 'C1', idx: 1 },
+        { note: 'F1', idx: 2 },
+        { note: 'C2', idx: 3 },
+        { note: 'E2', idx: 4 }
     ]);
 
     const setOscillator = (newType: Tone.ToneOscillatorType) => {
         setSynth(oldSynth => {
             oldSynth.disconnect();
 
-            return new Tone.Synth({
+            return new Tone.MembraneSynth({
                 oscillator: { type: newType } as Tone.OmniOscillatorOptions,
+                "envelope": {
+                    "attack": 0.001,
+                    "decay": 0.4,
+                    "sustain": 0.01,
+                    "release": 1.4,
+                },
+                "octaves": 10,
+                "pitchDecay": 0.05
             }).toDestination();
         });
     };
+
 
     const oscillators: List<OscillatorType> = List([
         'sine',
@@ -155,21 +106,17 @@ function Drums({ synth, setSynth }: InstrumentProps): JSX.Element {
     return (
         <div className="pv4">
             <div className="relative dib h4 w-100">
-                {Range(2, 7).map(octave =>
-                    keys.map(key => {
-                        const isMinor = key.note.indexOf('b') !== -1;
-                        const note = `${key.note}${octave}`;
-                        return (
-                            <DrumsKey
-                                key={note} //react key
-                                note={note}
-                                synth={synth}
-                                minor={isMinor}
-                                octave={octave}
-                                index={(octave - 2) * 7 + key.idx}
-                            />
-                        );
-                    }),
+                {keys.map(key => {
+                    const note = `${key.note}`;
+                    return (
+                        <DrumsKey
+                            key={note} //react key
+                            note={note}
+                            synth={synth}
+                            index={key.idx}
+                        />
+                    );
+                },
                 )}
             </div>
             <div className={'pl4 pt4 flex mt5'}>
