@@ -74,9 +74,9 @@ function KalimbaKeyWithoutJSX({
       style: {
         top: 0,
         left: `${index * 2}rem`,
-        zIndex: minor ? 1 : 0,
-        width: minor ? '1.5rem' : '2rem',
-        marginLeft: minor ? '0.25rem' : 0,
+        zIndex: '1 rem',
+        width: '1 rem',
+        marginLeft: '0.25rem',
       },
     },
     [],
@@ -100,16 +100,11 @@ function KalimbaType({ title, onClick, active }: any): JSX.Element {
 function Kalimba({ synth, setSynth }: InstrumentProps): JSX.Element {
   const keys = List([
     { note: 'C', idx: 0 },
-    { note: 'Db', idx: 0.5 },
     { note: 'D', idx: 1 },
-    { note: 'Eb', idx: 1.5 },
     { note: 'E', idx: 2 },
     { note: 'F', idx: 3 },
-    { note: 'Gb', idx: 3.5 },
     { note: 'G', idx: 4 },
-    { note: 'Ab', idx: 4.5 },
     { note: 'A', idx: 5 },
-    { note: 'Bb', idx: 5.5 },
     { note: 'B', idx: 6 },
   ]);
 
