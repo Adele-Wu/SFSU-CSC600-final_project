@@ -1,182 +1,137 @@
-// 3rd party library imports
 import * as Tone from 'tone';
 import classNames from 'classnames';
-import { List, Range } from 'immutable';
+import { List} from 'immutable';
 import React from 'react';
-
 // project imports
 import { Instrument, InstrumentProps } from '../Instruments';
-import { reduceEachTrailingCommentRange } from 'typescript';
 
 /** ------------------------------------------------------------------------ **
- * Contains implementation of components for Piano.
+ * Contains implementation of components for Drums.
  ** ------------------------------------------------------------------------ */
 
-interface PianoKeyProps {
-  note: string; // C, Db, D, Eb, E, F, Gb, G, Ab, A, Bb, B
-  duration?: string;
-  synth?: Tone.Synth; // Contains library code for making sound
-  minor?: boolean; // True if minor key, false if major key
-  octave: number;
-  index: number; // octave + index together give a location for the piano key
+interface SBKeyProps {
+    note: string; // C, Db, D, Eb, E, F, Gb, G, Ab, A, Bb, B
+    duration?: string;
+    synth?: Tone.Synth; // Contains library code for making sound
+    index: number; // give a location for the Drums key
 }
 
-export function PianoKey({
-  note,
-  synth,
-  minor,
-  index,
-}: PianoKeyProps): JSX.Element {
-  /**
-   * This React component corresponds to either a major or minor key in the piano.
-   * See `PianoKeyWithoutJSX` for the React component without JSX.
-   */
-  return (
-    // Observations:
-    // 1. The JSX refers to the HTML-looking syntax within TypeScript.
-    // 2. The JSX will be **transpiled** into the corresponding `React.createElement` library call.
-    // 3. The curly braces `{` and `}` should remind you of string interpolation.
-    <div
-      onMouseDown={() => synth?.triggerAttack(`${note}`)} // Question: what is `onMouseDown`?
-      onMouseUp={() => synth?.triggerRelease('+0.25')} // Question: what is `onMouseUp`?
-      className={classNames('ba pointer absolute dim', {
-        'bg-black black h3': minor, // minor keys are black
-        'black bg-white h4': !minor, // major keys are white
-      })}
-      style={{
-        margin: 20,
-        display: "inline-block",
-        height: 50,
-        width: 50,     
-      }}
-     
-    ></div>
-  );
+export function SBKeys({
+    note,
+    synth,
+    index,
+}: SBKeyProps): JSX.Element {
+    return (
+        <div
+            onMouseDown={() => synth?.triggerAttackRelease(`${note}`, '8n')}
+            className={classNames('pointer absolute sb child')}
+            style={{
+                // CSS
+                padding: 10,
+                margin: 20,
+                backgroundColor: '#FF6700',
+                width: 70,
+                height: 70,
+                borderRadius:10,
+                // left: `${index * 5}rem`,
+                }}
+        >
+        </div>
+    );
 }
 
-// eslint-disable-next-line
-function PianoKeyWithoutJSX({
-  note,
-  synth,
-  minor,
-  index,
-}: PianoKeyProps): JSX.Element {
-  /**
-   * This React component for pedagogical purposes.
-   * See `PianoKey` for the React component with JSX (JavaScript XML).
-   */
-  return React.createElement(
-    'div',
-    {
-      onMouseDown: () => synth?.triggerAttack(`${note}`),
-      onMouseUp: () => synth?.triggerRelease('+0.25'),
-      className: classNames('ba pointer absolute dim', {
-        'bg-black black h3': minor,
-        'black bg-white h4': !minor,
-      }),
-      style: {
-        top: 0,
-        left: `${index * 2}rem`,
-        zIndex: minor ? 1 : 0,
-        marginLeft: minor ? '0.25rem' : 0,
-        padding: 10,
-        margin: 20,
-        borderRadius: "50%",
-        height: 50,
-        width: 50,
-        
-      },
-    },
-    [],
-  );
-}
-
-function PianoType({ title, onClick, active }: any): JSX.Element {
-  return (
-    <div
-      onClick={onClick}
-      className={classNames('dim pointer ph2 pv1 ba mr2 br1 fw7 bw1', {
-        'b--purple black': active,
-        'gray b--yellow': !active,
-      })}
-    >
-      {title}
-    </div>
-  );
+function SBType({ title, onClick }: any): JSX.Element {
+    return (
+        <div
+            onClick={onClick}
+            className={classNames('dim pointer ph2 pv1 ba mr2 br1 fw7 bw1', {
+            })}
+        >
+            {title}
+        </div>
+    );
 }
 
 function Soundboard({ synth, setSynth }: InstrumentProps): JSX.Element {
-  const keys = List([
-    { note: 'C', idx: 0 },
-    { note: 'Db', idx: 0.5 },
-    { note: 'D', idx: 1 },
-    { note: 'Eb', idx: 1.5 },
-    { note: 'E', idx: 2 },
-    { note: 'F', idx: 3 },
-    { note: 'Gb', idx: 3.5 },
-    { note: 'G', idx: 4 },
-    { note: 'Ab', idx: 4.5 },
-    { note: 'A', idx: 5 },
-    { note: 'Bb', idx: 5.5 },
-    { note: 'B', idx: 6 },
-  ]);
+    const keys = List([
+        { note: 'A1', idx: 0 },
+        { note: 'A2', idx: 1 },
+        { note: 'B1', idx: 2 },
+        { note: 'C2', idx: 3 },
+        { note: 'G2', idx: 4 },
+        { note: 'E2', idx: 5 },
+        { note: 'F2', idx: 6 },
+        { note: 'C3', idx: 7 },
+        { note: 'D3', idx: 8 },
+        { note: 'G3', idx: 9 },
+        { note: 'E3', idx: 10 },
+        { note: 'F3', idx: 11 }
+    ]);
 
-  const setOscillator = (newType: Tone.ToneOscillatorType) => {
-    setSynth(oldSynth => {
-      oldSynth.disconnect();
+    const setOscillator = (newType: Tone.ToneOscillatorType) => {
+        setSynth(oldSynth => {
+            oldSynth.disconnect();
 
-      return new Tone.Synth({
-        oscillator: { type: newType } as Tone.OmniOscillatorOptions,
-      }).toDestination();
-    });
-  };
+            return new Tone.MembraneSynth({
+                oscillator: { type: newType } as Tone.OmniOscillatorOptions,
+                "envelope": {
+                    "attack": 0.001,
+                    "decay": 0.4,
+                    "sustain": 0.01,
+                    "release": 1.4,
+                },
+                "octaves": 10,
+                "pitchDecay": 0.05
+            }).toDestination();
+        });
+    };
 
-  const oscillators: List<OscillatorType> = List([
-    'sine',
-    'sawtooth',
-    'square',
-    'triangle',
-    'fmsine',
-    'fmsawtooth',
-    'fmtriangle',
-    'amsine',
-    'amsawtooth',
-    'amtriangle',
-  ]) as List<OscillatorType>;
 
-  return (
-    <div className="pv4">
-      <div className="relative dib h4 w-100 ml4">
-        {Range(2, 7).map(octave =>
-          keys.map(key => {
-            const isMinor = key.note.indexOf('b') !== -1;
-            const note = `${key.note}${octave}`;
-            return (
-              <PianoKey
-                key={note} //react key
-                note={note}
-                synth={synth}
-                minor={isMinor}
-                octave={octave}
-                index={(octave - 2) * 7 + key.idx}
-              />
-            );
-          }),
-        )}
-      </div>
-      <div className={'pl4 pt4 flex'}>
-        {oscillators.map(o => (
-          <PianoType
-            key={o}
-            title={o}
-            onClick={() => setOscillator(o)}
-            active={synth?.oscillator.type === o}
-          />
-        ))}
-      </div>
-    </div>
-    
-  );
+    const oscillators: List<OscillatorType> = List([
+        'sine',
+        'sawtooth',
+        'square',
+        'triangle',
+        'fmsine',
+        'fmsawtooth',
+        'fmtriangle',
+        'amsine',
+        'amsawtooth',
+        'amtriangle',
+    ]) as List<OscillatorType>;
+
+    return (
+        <div 
+        className={classNames('pv4')}
+        >
+            <div
+            className={classNames('relative dib h4 w-100 parent')}
+            >
+            {keys.map(key => {
+                const note = `${key.note}`;
+                return (
+                    <SBKeys
+                        key={note} 
+                        note={note}
+                        synth={synth}
+                        index={key.idx}
+                    />
+                    );
+                },
+            )}
+            </div>
+            <div className={'pl4 pt4 flex mt5'}>
+                {oscillators.map(o => (
+                    <SBType
+                        key={o}
+                        title={o}
+                        onClick={() => setOscillator(o)}
+                        active={synth?.oscillator.type === o}
+                    />
+                ))}
+            </div>
+        </div>
+    );
 }
 
-export const SoundboardInstrument = new Instrument('SoundboardInstrument', Soundboard);
+export const SoundboardInstrument = new Instrument('Sound Board mini', Soundboard);
