@@ -9,6 +9,7 @@ const sqlite3 = _sqlite3.verbose();
 
 // An example of the singleton design pattern.
 //
+
 // NOTE: This lazily initializes the database. A good place to think about eager
 // versus lazy and performance in large applications.
 export class DB {

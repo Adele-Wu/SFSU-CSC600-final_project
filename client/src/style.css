@@ -36,3 +36,8 @@
     width: 100px;
     background-color: blue;
 }
+
+#kalimba{
+    background-image: url("./img/1027450.png");
+    background-repeat: no-repeat;
+}
