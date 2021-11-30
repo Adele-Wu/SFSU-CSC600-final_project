@@ -23,10 +23,8 @@ import { StephVisualizer } from './visualizers/StephVisualizer'
  */
 export type AppState = Map<string, any>;
 
-const instruments = List([PianoInstrument, DrumsInstrument,SoundboardInstrument]);
-const visualizers = List([WaveformVisualizer, AdeleVisualizer,Maninderviz]);
-const instruments = List([PianoInstrument, DrumsInstrument, KalimbaInstrument]);
-const visualizers = List([WaveformVisualizer, AdeleVisualizer, StephVisualizer]);
+const instruments = List([PianoInstrument, DrumsInstrument, KalimbaInstrument,  SoundboardInstrument]);
+const visualizers = List([WaveformVisualizer, AdeleVisualizer, StephVisualizer, Maninderviz]);
 
 export const defaultState: AppState = Map<string, any>({
   instruments,
