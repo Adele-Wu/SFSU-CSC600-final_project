@@ -80,13 +80,13 @@ function KalimbaType({ title, onClick, active }: any): JSX.Element {
 
 function Kalimba({ synth, setSynth }: InstrumentProps): JSX.Element {
   const keys = List([
-    { note: 'C', idx: 0 },
-    { note: 'D', idx: 1.5 },
-    { note: 'E', idx: 3 },
-    { note: 'F', idx: 4.5 },
-    { note: 'G', idx: 6 },
-    { note: 'A', idx: 7.5 },
-    { note: 'B', idx: 9 },
+    { note: 'C', idx: 5 },
+    { note: 'D', idx: 7.5 },
+    { note: 'E', idx: 10 },
+    { note: 'F', idx: 12.5 },
+    { note: 'G', idx: 15 },
+    { note: 'A', idx: 17.6 },
+    { note: 'B', idx: 20.1 },
   ]);
 
   const setOscillator = (newType: Tone.ToneOscillatorType) => {
@@ -113,7 +113,7 @@ function Kalimba({ synth, setSynth }: InstrumentProps): JSX.Element {
   ]) as List<OscillatorType>; 
 
   return (
-    <div className="pv4">
+    <div className="pv4" id="kalimba">
       <div className="relative dib h4 w-100 ml4">
         {Range(2, 7).map(octave =>
           keys.map(key => {
