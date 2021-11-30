@@ -17,7 +17,7 @@ export class DB {
   // FIXME: we can initialize differently for production
   // NOTE: We may want to use :memory: for local environments... not sure what's best
   // with hot-reloading. For now, I'm using app.db and gitignore'ing it.
-  private static readonly DB_PATH: string = 'app.db';
+  private static readonly DB_PATH: string = 'app_1.db';
   private static hasInitialized: boolean;
   private static memo: Map<string, string> = new Map();
 
