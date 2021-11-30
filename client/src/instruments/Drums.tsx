@@ -5,7 +5,7 @@ import { List, Range } from 'immutable';
 import React from 'react';
 
 // project imports
-import { Instrument, InstrumentProps } from '../Instruments';
+import { MembraneInstrument, InstrumentProps } from '../MembraneInstrument';
 
 /** ------------------------------------------------------------------------ **
  * Contains implementation of components for Drums.
@@ -14,8 +14,10 @@ import { Instrument, InstrumentProps } from '../Instruments';
 interface DrumsKeyProps {
     note: string; // C, Db, D, Eb, E, F, Gb, G, Ab, A, Bb, B
     duration?: string;
-    synth?: Tone.Synth; // Contains library code for making sound
+    synth?: Tone.MembraneSynth; // Contains library code for making sound
     index: number; // give a location for the Drums key
+    octaves: number;
+    pitchDecay: number;
 }
 
 export function DrumsKey({
@@ -55,8 +57,8 @@ function DrumsType({ title, onClick, active }: any): JSX.Element {
         <div
             onClick={onClick}
             className={classNames('dim pointer ph3 pv2 ba mr1 br1 fw7 bw1 drum_oscillator_buttons', {
-                'b--black black': active,
-                'white b--light-gray': !active,
+                'b--black white': active,
+                'white b--none': !active,
               })}
         >
             {title}
@@ -67,8 +69,8 @@ function DrumsType({ title, onClick, active }: any): JSX.Element {
 function Drums({ synth, setSynth }: InstrumentProps): JSX.Element {
     const keys = List([
         { note: 'A1', idx: 0 },
-        { note: 'C1', idx: 1 },
-        { note: 'F1', idx: 2 },
+        { note: 'B1', idx: 1 },
+        { note: 'D2', idx: 2 },
         { note: 'C2', idx: 3 },
         { note: 'E2', idx: 4 }
     ]);
@@ -81,12 +83,12 @@ function Drums({ synth, setSynth }: InstrumentProps): JSX.Element {
                 oscillator: { type: newType } as Tone.OmniOscillatorOptions,
                 "envelope": {
                     "attack": 0.001,
-                    "decay": 0.4,
+                    "decay": 0.35,
                     "sustain": 0.01,
                     "release": 1.4,
                 },
-                "octaves": 10,
-                "pitchDecay": 0.05
+                "octaves": 9,
+                "pitchDecay": 0.0005,
             }).toDestination();
         });
     };
@@ -106,8 +108,8 @@ function Drums({ synth, setSynth }: InstrumentProps): JSX.Element {
     ]) as List<OscillatorType>;
 
     return (
-        <div className="pv4">
-            <div className="relative dib h4 w-100">
+        <div className="pv4 pl2">
+            <div className="relative dib h4 w-100 ">
                 {keys.map(key => {
                     const note = `${key.note}`;
                     return (
@@ -116,6 +118,8 @@ function Drums({ synth, setSynth }: InstrumentProps): JSX.Element {
                             note={note}
                             synth={synth}
                             index={key.idx}
+                            octaves={1}
+                            pitchDecay={0.0005}
                         />
                     );
                 },
@@ -135,4 +139,4 @@ function Drums({ synth, setSynth }: InstrumentProps): JSX.Element {
     );
 }
 
-export const DrumsInstrument = new Instrument('Drums', Drums);
+export const DrumsInstrument = new MembraneInstrument('Drums', Drums);
