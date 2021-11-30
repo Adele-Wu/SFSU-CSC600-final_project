@@ -29,7 +29,7 @@ export function SBKeys({
                 // CSS
                 padding: 10,
                 margin: 20,
-                backgroundColor: '#FF6700',
+                backgroundColor: "#D3D3D3",
                 width: 70,
                 height: 70,
                 borderRadius:10,
@@ -102,7 +102,7 @@ function Soundboard({ synth, setSynth }: InstrumentProps): JSX.Element {
 
     return (
         <div 
-        className={classNames('pv4')}
+        className={classNames('pv4 lolz')}
         >
             <div
             className={classNames('relative dib h4 w-100 parent')}
