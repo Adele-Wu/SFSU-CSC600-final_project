@@ -139,4 +139,4 @@ function Drums({ synth, setSynth }: InstrumentProps): JSX.Element {
     );
 }
 
-export const DrumsInstrument = new MembraneInstrument('Drums', Drums);
+export const DrumsInstrument = new MembraneInstrument('adele-wu', Drums);

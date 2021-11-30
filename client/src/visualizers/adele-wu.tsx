@@ -8,7 +8,7 @@ import { Visualizer } from '../Visualizers';
 var start = 0;
 
 export const AdeleVisualizer = new Visualizer(
-  'AdeleVisualizer',
+  'adele-wu',
   (p5: P5, analyzer: Tone.Analyser) => {
     const width = window.innerWidth;
     const height = window.innerHeight / 2;
