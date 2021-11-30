@@ -1,5 +1,4 @@
 .drum{
-    
     box-shadow: 
     12px 12px 16px 0 rgba(0, 0, 0, 0.25),
     -8px -8px 12px 0 rgba(255, 255, 255, 0.3),
@@ -12,6 +11,23 @@
     12px 12px 16px 0 rgba(0, 0, 0, .25) inset,
     -8px -8px 12px 0 rgba(255, 255, 255, 0.3) inset;
 }
+
+.drum_oscillator_buttons{
+    /* background-color: #7946AF; */
+    background-image: linear-gradient(to right, #924CAF , #3B4EAF);
+    box-shadow: 
+    12px 12px 16px 0 rgba(0, 0, 0, 0.25),
+    -8px -8px 12px 0 rgba(255, 255, 255, 0.3),
+    12px 12px 16px 0 rgba(255, 255, 255, 0.3) inset,
+    -8px -8px 12px 0 rgba(0, 0, 0, .25) inset;
+}
+
+.drum_oscillator_buttons:active{
+    box-shadow: 
+    12px 12px 16px 0 rgba(0, 0, 0, .25) inset,
+    -8px -8px 12px 0 rgba(255, 255, 255, 0.3) inset;
+}
+
 .sb{
     border-width: 2px;
     border-color: black;
@@ -45,4 +61,10 @@
 #kalimba{
     background-image: url("./img/1027450.png");
     background-repeat: no-repeat;
+}
+
+.kalimbakeys:active{
+    box-shadow: 
+    12px 12px 16px 0 rgba(0, 0, 0, .25) inset,
+    -8px -8px 12px 0 rgba(255, 255, 255, 0.3) inset;
 }

@@ -54,8 +54,10 @@ function DrumsType({ title, onClick, active }: any): JSX.Element {
     return (
         <div
             onClick={onClick}
-            className={classNames('dim pointer ph2 pv1 ba mr2 br1 fw7 bw1', {
-            })}
+            className={classNames('dim pointer ph3 pv2 ba mr1 br1 fw7 bw1 drum_oscillator_buttons', {
+                'b--black black': active,
+                'white b--light-gray': !active,
+              })}
         >
             {title}
         </div>
@@ -119,7 +121,7 @@ function Drums({ synth, setSynth }: InstrumentProps): JSX.Element {
                 },
                 )}
             </div>
-            <div className={'pl4 pt4 flex mt5'}>
+            <div className={'pl2 pt3 flex mt5'}>
                 {oscillators.map(o => (
                     <DrumsType
                         key={o}

@@ -23,7 +23,7 @@ export function KalimbaKey({
     <div
       onMouseDown={() => synth?.triggerAttack(`${note}`)}
       onMouseUp={() => synth?.triggerRelease('+0.25')}
-      className={classNames('ba pointer absolute kalimba', {
+      className={classNames('ba pointer absolute kalimbakeys', {
         'black bg-light-gray h4': note,
       })}
       style={{
@@ -49,7 +49,7 @@ function KalimbaKeyWithoutJSX({
     {
       onMouseDown: () => synth?.triggerAttack(`${note}`),
       onMouseUp: () => synth?.triggerRelease('+0.25'),
-      className: classNames('ba pointer absolute kalimba', {
+      className: classNames('ba pointer absolute kalimbakeys', {
         'black bg-white h4': note,
       }),
       style: {
