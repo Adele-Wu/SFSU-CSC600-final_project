@@ -1,75 +1,56 @@
-// 3rd party library imports
 import * as Tone from 'tone';
 import classNames from 'classnames';
 import { List, Range } from 'immutable';
 import React from 'react';
 
-// project imports
 import { Instrument, InstrumentProps } from '../Instruments';
 
 
 interface KalimbaKeyProps {
-  note: string; // C, Db, D, Eb, E, F, Gb, G, Ab, A, Bb, B
+  note: string; // C, D, E, F, G, A, B
   duration?: string;
-  synth?: Tone.Synth; // Contains library code for making sound
-  minor?: boolean; // True if minor key, false if major key
+  synth?: Tone.Synth;
   octave: number;
-  index: number; // octave + index together give a locatio
+  index: number;
 }
 
 export function KalimbaKey({
   note,
   synth,
-  minor,
   index,
 }: KalimbaKeyProps): JSX.Element {
-  /**
-   * This React component corresponds to either a major or minor key.
-   * See `KalimbaKeyWithoutJSX` for the React component without JSX.
-   */
   return (
-    // Observations:
-    // 1. The JSX refers to the HTML-looking syntax within TypeScript.
-    // 2. The JSX will be **transpiled** into the corresponding `React.createElement` library call.
-    // 3. The curly braces `{` and `}` should remind you of string interpolation.
     <div
-      onMouseDown={() => synth?.triggerAttack(`${note}`)} // Question: what is `onMouseDown`?
-      onMouseUp={() => synth?.triggerRelease('+0.25')} // Question: what is `onMouseUp`?
-      className={classNames('ba pointer absolute dim', {
-        'bg-light-gray black h3': minor, // minor keys are black
-        'black bg-light-gray h4': !minor, // major keys are white
+      onMouseDown={() => synth?.triggerAttack(`${note}`)}
+      onMouseUp={() => synth?.triggerRelease('+0.25')}
+      className={classNames('ba pointer absolute kalimba', {
+        'black bg-light-gray h4': note,
       })}
       style={{
         // CSS
         top: 0,
         left: `${index * 1}rem`,
-        zIndex: minor ? 1 : 0,
+        zIndex: 0,
         width: '.75rem',
         marginLeft: 2,
+        height: 75,
       }}
     ></div>
   );
 }
 
-// eslint-disable-next-line
 function KalimbaKeyWithoutJSX({
   note,
   synth,
-  minor,
   index,
 }: KalimbaKeyProps): JSX.Element {
-  /**
-   * This React component for pedagogical purposes.
-   * See `KalimbaKey` for the React component with JSX (JavaScript XML).
-   */
   return React.createElement(
     'div',
     {
       onMouseDown: () => synth?.triggerAttack(`${note}`),
       onMouseUp: () => synth?.triggerRelease('+0.25'),
-      className: classNames('ba pointer absolute dim', {
-        'bg-black black h3': minor,
-        'black bg-white h4': !minor,
+      className: classNames('ba pointer absolute kalimba', {
+        'black bg-white h4': note,
       }),
       style: {
         top: 0,
@@ -100,12 +81,12 @@ function KalimbaType({ title, onClick, active }: any): JSX.Element {
 function Kalimba({ synth, setSynth }: InstrumentProps): JSX.Element {
   const keys = List([
     { note: 'C', idx: 0 },
-    { note: 'D', idx: 1 },
-    { note: 'E', idx: 2 },
-    { note: 'F', idx: 3 },
-    { note: 'G', idx: 4 },
-    { note: 'A', idx: 5 },
-    { note: 'B', idx: 6 },
+    { note: 'D', idx: 1.5 },
+    { note: 'E', idx: 3 },
+    { note: 'F', idx: 4.5 },
+    { note: 'G', idx: 6 },
+    { note: 'A', idx: 7.5 },
+    { note: 'B', idx: 9 },
   ]);
 
   const setOscillator = (newType: Tone.ToneOscillatorType) => {
@@ -129,21 +110,19 @@ function Kalimba({ synth, setSynth }: InstrumentProps): JSX.Element {
     'amsine',
     'amsawtooth',
     'amtriangle',
-  ]) as List<OscillatorType>;
+  ]) as List<OscillatorType>; 
 
   return (
     <div className="pv4">
       <div className="relative dib h4 w-100 ml4">
         {Range(2, 7).map(octave =>
           keys.map(key => {
-            const isMinor = key.note.indexOf('b') !== -1;
             const note = `${key.note}${octave}`;
             return (
               <KalimbaKey
-                key={note} //react key
+                key={note}
                 note={note}
                 synth={synth}
-                minor={isMinor}
                 octave={octave}
                 index={key.idx+1}
               />
