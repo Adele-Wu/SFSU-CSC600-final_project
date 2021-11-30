@@ -27,7 +27,6 @@
     flex-wrap: wrap;
     /* flex-wrap:wrap-reverse !important; */
     position: relative;
-    padding-bottom: 50px;
 }
 .child{
     flex: 1 0 5%; /* explanation below */
@@ -37,6 +36,13 @@
     width: 100px;
     background-color: blue;
 }
+
 .lolz{
     background-image: linear-gradient(to left, rgb(176, 38, 255),rgb(14, 232, 228),rgb(57, 255, 20), rgb(255, 255, 0))
+}
+
+
+#kalimba{
+    background-image: url("./img/1027450.png");
+    background-repeat: no-repeat;
 }

@@ -102,7 +102,9 @@ function Soundboard({ synth, setSynth }: InstrumentProps): JSX.Element {
 
     return (
         <div 
+
         className={classNames('pv4 lolz')}
+
         >
             <div
             className={classNames('relative dib h4 w-100 parent')}

@@ -44,6 +44,7 @@ export const Maninderviz = new Visualizer(
 
         p5.translate(width/2.5, height/2);
         p5.beginShape();
+
         // ------------------------------------------------------------------------
         // my old visualizer
     //     const width = window.innerWidth;
@@ -98,8 +99,9 @@ export const Maninderviz = new Visualizer(
             p5.stroke(r, g, b);
             p5.fill(r, g, b);
             p5.rotate(space);
+
             p5.rect(75, 0, h, w).strokeWeight(1);;
-        }
+
       
         
         // for (let i = 0; i < values.length; i++) {
@@ -110,7 +112,7 @@ export const Maninderviz = new Visualizer(
         //     p5.vertex(x, y).noFill().rect(23,0,0,0);
         //     // console.log("amp", amplitude);
         //     console.log("y", y);
-        //   }
+         }
         start += 0.03;
 
         p5.endShape();
