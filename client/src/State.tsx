@@ -23,6 +23,7 @@ import { StephVisualizer } from './visualizers/StephVisualizer'
  */
 export type AppState = Map<string, any>;
 
+
 const instruments = List([PianoInstrument, DrumsInstrument, KalimbaInstrument,  SoundboardInstrument]);
 const visualizers = List([WaveformVisualizer, AdeleVisualizer, StephVisualizer, Maninderviz]);
 
