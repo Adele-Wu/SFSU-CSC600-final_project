@@ -42,8 +42,6 @@ export const StephVisualizer = new Visualizer(
         // var b = p5.map(n, 0, 1, 150, 255);
 
         let color = p5.random(0, 360)
-        // let color2 = p5.random(0, 255)
-        // let color3 = p5.random(0, 255)
 
         p5.rotate(space);
 
