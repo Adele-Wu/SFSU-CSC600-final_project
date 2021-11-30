@@ -71,11 +71,11 @@ export const AdeleVisualizer = new Visualizer(
 
       // drawing the circle visual
       p5.rotate(space);
-      p5.rect(75, 0, h, w);
+      p5.rect(90, 0, h, w);
 
       // creation of a particle.
-      var x = p5.random(0, width/25)+(my_amp*p5.random(0, width*2));
-      var y = p5.random(0, width/25)+(my_amp*p5.random(0, height*2));
+      var x = p5.random(0, 75)+(my_amp*p5.random(0, width*2));
+      var y = p5.random(0, 75)+(my_amp*p5.random(0, height*2));
       var r = p5.random(1, 8);
       p5.circle(x, y, r);
 
