@@ -37,9 +37,9 @@ export const DeathsValentine = new Visualizer(
 
         var h = p5.map(n, 0, 1, -150, 100);
 
-        var r = p5.map(Math.sin(i), -1, 1, 100, 200);
-        var g = p5.map(h, -150, 150, 0, 150);
-        var b = p5.map(n, 0, 1, 150, 255);
+        // var r = p5.map(Math.sin(i), -1, 1, 100, 200);
+        // var g = p5.map(h, -150, 150, 0, 150);
+        // var b = p5.map(n, 0, 1, 150, 255);
 
         let color = p5.random(0, 360)
         p5.rotate(space);
