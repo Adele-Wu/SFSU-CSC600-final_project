@@ -16,7 +16,7 @@ import { AppState } from './State';
  * 'instrument': Instrument
  * 'visualizer': Visualizer
  * 'songs': List<string>
- * 'notes': List<{id: number, songTitle: string, notes: string}>
+ * 'notes': List<{id: number, songTitle: string, notes: string,album,artist}>
  */
 type DispatchArgs = {
   [key: string]: any;

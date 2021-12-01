@@ -40,12 +40,14 @@ export function SBKeys({
     );
 }
 
-function SBType({ title, onClick }: any): JSX.Element {
+function SBType({ title, onClick,active }: any): JSX.Element {
     return (
         <div
             onClick={onClick}
-            className={classNames('dim pointer ph2 pv1 ba mr2 br1 fw7 bw1', {
-            })}
+            className={classNames('dim pointer ph3 pv2 ba mr1 br1 fw7 bw1', {
+                'b--black black': active,
+                'black b--white black': !active,
+              })}
         >
             {title}
         </div>
