@@ -7,8 +7,8 @@ import { Visualizer } from '../Visualizers';
 
 var start = 1;
 
-export const StephVisualizer = new Visualizer(
-  'StephVisualizer',
+export const DeathsValentine = new Visualizer(
+  'DeathsValentine',
   (p5: P5, analyzer: Tone.Analyser) => {
 
     const width = window.innerWidth;
