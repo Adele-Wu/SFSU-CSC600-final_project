@@ -1,7 +1,7 @@
 // 3rd party library imports
 import * as Tone from 'tone';
 import classNames from 'classnames';
-import { List, Range } from 'immutable';
+import { List } from 'immutable';
 import React from 'react';
 
 // project imports
@@ -29,6 +29,10 @@ export function DrumsKey({
      * This React component corresponds to either a major or minor key in the Drums.
      * See `DrumsKeyWithoutJSX` for the React component without JSX.
      */
+
+    // colors for drums
+    const colors = ['#ba53c2', '#9c51bd', '#744caf', '#4d439c', '#33378a']
+
     return (
         // Observations:
         // 1. The JSX refers to the HTML-looking syntax within TypeScript.
@@ -36,17 +40,20 @@ export function DrumsKey({
         // 3. The curly braces `{` and `}` should remind you of string interpolation.
         <div
             onMouseDown={() => synth?.triggerAttackRelease(`${note}`, '8n')}
-            className={classNames('pointer absolute drum')}
+            className={classNames('pointer relative drum top')}
             style={{
                 // CSS
-                padding: 10,
-                margin: 20,
-                backgroundColor: '#D2B48C',
+                // padding: 10,
+                // margin: 20,
+                // backgroundColor: '#D2B48C',
+                backgroundColor: colors[index],
                 display: "inline-block",
                 borderRadius: "50%",
-                width: 150,
-                height: 150,
-                left: `${index * 10}rem`,
+                width: 175-(index*15),
+                height: 175-(index*15),
+                marginLeft: (index)+10,
+                marginRight: 5-(index)
+                // left: `${(index*12)}rem`,
                 }}
         ></div >
     );
@@ -125,7 +132,7 @@ function Drums({ synth, setSynth }: InstrumentProps): JSX.Element {
                 },
                 )}
             </div>
-            <div className={'pl2 pt3 flex mt5'}>
+            <div className={'pl2 pt4 flex mt3'}>
                 {oscillators.map(o => (
                     <DrumsType
                         key={o}

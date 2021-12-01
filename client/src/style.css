@@ -12,6 +12,10 @@
     -8px -8px 12px 0 rgba(255, 255, 255, 0.3) inset;
 }
 
+.drum:hover{
+    opacity: 80%;
+}
+
 .drum_oscillator_buttons{
     /* background-color: #7946AF; */
     background-image: linear-gradient(to right, #924CAF , #3B4EAF);
