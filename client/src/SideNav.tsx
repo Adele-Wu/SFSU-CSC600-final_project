@@ -101,6 +101,16 @@ function Visualizers({ state }: SideNavProps): JSX.Element {
     </Section>
   );
 }
+function SearchSongs({ state, dispatch }: SideNavProps): JSX.Element {
+  return (
+    <div className="flex">
+      <input type="text" id="search-text" placeholder="search" className="w-90"></input>
+      <button id="search-button">
+        search
+      </button>
+    </div>
+  )
+}
 
 function Songs({ state, dispatch }: SideNavProps): JSX.Element {
   const songs: List<any> = state.get('songs', List());
@@ -131,6 +141,7 @@ export function SideNav({ state, dispatch }: SideNavProps): JSX.Element {
       <div className="flex-auto">
         <Instruments state={state} dispatch={dispatch} />
         <Visualizers state={state} dispatch={dispatch} />
+        <SearchSongs state={state} dispatch={dispatch} />
         <Songs state={state} dispatch={dispatch} />
       </div>
     </div>

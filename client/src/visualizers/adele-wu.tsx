@@ -8,7 +8,7 @@ import { Visualizer } from '../Visualizers';
 var start = 0;
 
 export const AdeleVisualizer = new Visualizer(
-  'AdeleVisualizer',
+  'adele-wu',
   (p5: P5, analyzer: Tone.Analyser) => {
     const width = window.innerWidth;
     const height = window.innerHeight / 2;
@@ -76,7 +76,7 @@ export const AdeleVisualizer = new Visualizer(
       // creation of a particle.
       var x = p5.random(0, 75)+(my_amp*p5.random(0, width*2));
       var y = p5.random(0, 75)+(my_amp*p5.random(0, height*2));
-      var r = p5.random(1, 8);
+      var r = p5.random(1, 10);
       p5.circle(x, y, r);
 
     }
