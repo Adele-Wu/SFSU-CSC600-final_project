@@ -4,9 +4,9 @@ import { List, Map } from 'immutable';
 // project dependencies
 import { PianoInstrument } from './instruments/Piano';
 import { WaveformVisualizer } from './visualizers/Waveform';
-import { DrumsInstrument } from './instruments/Drums';
+import { DrumsInstrument } from './instruments/adele-wu';
 import {SoundboardInstrument} from './instruments/soundboard'
-import { AdeleVisualizer } from './visualizers/AdeleVisualizer'
+import { AdeleVisualizer } from './visualizers/adele-wu'
 import {Maninderviz} from './visualizers/Maninderviz'
 import { KalimbaInstrument } from './instruments/DeathsValentine';
 import { StephVisualizer } from './visualizers/StephVisualizer'
