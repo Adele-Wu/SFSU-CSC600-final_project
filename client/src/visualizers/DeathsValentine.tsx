@@ -7,8 +7,8 @@ import { Visualizer } from '../Visualizers';
 
 var start = 1;
 
-export const StephVisualizer = new Visualizer(
-  'StephVisualizer',
+export const DeathsValentine = new Visualizer(
+  'DeathsValentine',
   (p5: P5, analyzer: Tone.Analyser) => {
 
     const width = window.innerWidth;
@@ -22,7 +22,7 @@ export const StephVisualizer = new Visualizer(
 
     p5.translate(width / 2, height / 2)
 
-    // p5.colorMode(p5.HSB, 360, 100, 100);
+    p5.colorMode(p5.HSB, 360, 100, 100);
     
     var space = 1;
 
@@ -37,17 +37,17 @@ export const StephVisualizer = new Visualizer(
 
         var h = p5.map(n, 0, 1, -150, 100);
 
-        var r = p5.map(Math.sin(i), -1, 1, 100, 200);
-        var g = p5.map(h, -150, 150, 0, 150);
-        var b = p5.map(n, 0, 1, 150, 255);
+        // var r = p5.map(Math.sin(i), -1, 1, 100, 200);
+        // var g = p5.map(h, -150, 150, 0, 150);
+        // var b = p5.map(n, 0, 1, 150, 255);
 
-        // let color = p5.random(0, 360)
+        let color = p5.random(0, 360)
         p5.rotate(space);
 
-        p5.fill(r,g,b) 
+        // p5.fill(r,g,b) 
 
-        // p5.fill(0,0,0); 
-        // p5.stroke(color, color, color);
+        p5.fill(0,0,0); 
+        p5.stroke(color, color, color);
 
         p5.rect(300, 0, h, 20);
 

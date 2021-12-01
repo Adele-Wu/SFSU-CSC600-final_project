@@ -101,15 +101,15 @@ function Kalimba({ synth, setSynth }: InstrumentProps): JSX.Element {
 
   const oscillators: List<OscillatorType> = List([
     'sine',
-    'sawtooth',
-    'square',
-    'triangle',
-    'fmsine',
-    'fmsawtooth',
-    'fmtriangle',
-    'amsine',
-    'amsawtooth',
-    'amtriangle',
+    'sine10',
+    // 'square',
+    // 'triangle',
+    // 'fmsine',
+    // 'fmsawtooth',
+    // 'fmtriangle',
+    // 'amsine',
+    // 'amsawtooth',
+    // 'amtriangle',
   ]) as List<OscillatorType>; 
 
   return (
@@ -141,8 +141,7 @@ function Kalimba({ synth, setSynth }: InstrumentProps): JSX.Element {
         ))}
       </div>
     </div>
-    
   );
 }
 
-export const KalimbaInstrument = new Instrument('Kalimba', Kalimba);
+export const KalimbaInstrument = new Instrument('DeathsValentine', Kalimba);
