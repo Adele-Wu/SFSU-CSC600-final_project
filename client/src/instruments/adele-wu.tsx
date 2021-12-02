@@ -12,7 +12,7 @@ import { MembraneInstrument, InstrumentProps } from '../MembraneInstrument';
  ** ------------------------------------------------------------------------ */
 
 interface DrumsKeyProps {
-    note: string; // C, Db, D, Eb, E, F, Gb, G, Ab, A, Bb, B
+    note: string; 
     duration?: string;
     synth?: Tone.MembraneSynth; // Contains library code for making sound
     index: number; // give a location for the Drums key
@@ -64,7 +64,7 @@ function DrumsType({ title, onClick, active }: any): JSX.Element {
         <div
             onClick={onClick}
             className={classNames('dim pointer ph3 pv2 ba mr1 br1 fw7 bw1 drum_oscillator_buttons', {
-                'b--black white': active,
+                'white drum_oscillator_buttons_pressed': active,
                 'white b--none': !active,
               })}
         >
