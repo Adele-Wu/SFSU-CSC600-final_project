@@ -119,16 +119,18 @@ function Songs({ state, dispatch }: SideNavProps): JSX.Element {
       {songs.map(song => (
         <div
           key={song.get('id')}
-          className="f6 pointer underline flex items-center no-underline i dim"
+          className="f6 pointer underline items-center no-underline i dim"
           onClick={() =>
             dispatch(new DispatchAction('PLAY_SONG', { id: song.get('id') }))
           }
         >
           <Music20 className="mr1" />
           {song.get('songTitle')}
-          {" - "}
-          {song.get('artist')}
-          {}
+
+          <div className="gray ml4 f7">
+            {song.get('artist')}
+          </div>
+          
         </div>
       ))}
     </Section>
