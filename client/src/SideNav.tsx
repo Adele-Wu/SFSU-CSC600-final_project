@@ -127,8 +127,12 @@ function Songs({ state, dispatch }: SideNavProps): JSX.Element {
           <Music20 className="mr1" />
           {song.get('songTitle')}
 
-          <div className="gray ml4 f7">
+          <div className="gray ml4">
             {song.get('artist')}
+          </div>
+
+          <div className="gray ml4 f7">
+            {song.get('album')}
           </div>
           
         </div>
