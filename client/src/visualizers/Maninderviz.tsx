@@ -45,7 +45,7 @@ export const Maninderviz = new Visualizer(
         
         p5.beginShape();
         var space = .25
-        for (let i = 0; i < 360; i += space) {
+        for (let i = 0; i < 100; i += space) {
             p5.rotate(space);
             p5.circle(400,100,100);
          }
