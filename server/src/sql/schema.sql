@@ -9,7 +9,7 @@ PRAGMA foreign_keys;
 CREATE TABLE songs (
 	id int NOT NULL PRIMARY KEY,
 	song_title text NOT NULL,
-	notes varchar NOT NULL
+	notes varchar NOT NULL,
 );
 
 INSERT INTO songs (id, song_title, notes) 
