@@ -7,7 +7,7 @@ import { Instrument, InstrumentProps } from '../Instruments';
 
 
 interface KalimbaKeyProps {
-  note: string; // C, D, E, F, G, A, B
+  note: string;
   duration?: string;
   synth?: Tone.Synth;
   octave: number;
@@ -33,7 +33,7 @@ export function KalimbaKey({
         zIndex: 0,
         width: '.75rem',
         marginLeft: 2,
-        height: 75,
+        height: 150,
       }}
     ></div>
   );
@@ -89,6 +89,7 @@ function Kalimba({ synth, setSynth }: InstrumentProps): JSX.Element {
     { note: 'B', idx: 20.1 },
   ]);
 
+
   const setOscillator = (newType: Tone.ToneOscillatorType) => {
     setSynth(oldSynth => {
       oldSynth.disconnect();
@@ -102,7 +103,7 @@ function Kalimba({ synth, setSynth }: InstrumentProps): JSX.Element {
   const oscillators: List<OscillatorType> = List([
     'sine',
     'sine10',
-    // 'square',
+    'amsine10',
     // 'triangle',
     // 'fmsine',
     // 'fmsawtooth',
@@ -130,7 +131,12 @@ function Kalimba({ synth, setSynth }: InstrumentProps): JSX.Element {
           }),
         )}
       </div>
-      <div className={'pl4 pt4 flex'}>
+      <div>
+        <p>
+          
+        </p>
+      </div>
+      <div className={'pl4 pt7 flex'}>
         {oscillators.map(o => (
           <KalimbaType
             key={o}
