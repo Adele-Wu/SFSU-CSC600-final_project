@@ -80,12 +80,12 @@ function KalimbaType({ title, onClick, active }: any): JSX.Element {
 
 function Kalimba({ synth, setSynth }: InstrumentProps): JSX.Element {
   const keys = List([
-    { note: 'C', idx: 5 },
-    { note: 'D', idx: 7.5 },
-    { note: 'E', idx: 10 },
-    { note: 'F', idx: 12.5 },
-    { note: 'G', idx: 15 },
-    { note: 'A', idx: 17.6 },
+    { note: 'A', idx: 5 },
+    { note: 'F', idx: 7.5 },
+    { note: 'D', idx: 10 },
+    { note: 'C', idx: 12.5 },
+    { note: 'E', idx: 15 },
+    { note: 'G', idx: 17.6 },
     { note: 'B', idx: 20.1 },
   ]);
 
