@@ -93,13 +93,12 @@ function Soundboard({ synth, setSynth }: InstrumentProps): JSX.Element {
         'sine',
         'sawtooth',
         'square',
-        'triangle',
+        'triangle6',
         'fmsine',
-        'fmsawtooth',
         'fmtriangle',
         'amsine',
-        'amsawtooth',
-        'amtriangle',
+        'amsawtooth6',
+        'amtriangle3',
     ]) as List<OscillatorType>;
 
     return (

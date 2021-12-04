@@ -49,7 +49,7 @@ export const Maninderviz = new Visualizer(
             p5.rotate(space);
             p5.circle(400,100,100);
          }
-         p5.translate(p5.random(-20, 20),p5.random(-20, 20))
+         p5.translate(p5.random(-5, 5),p5.random(-5, 5))
         start += 5;
         // p5.circle(400,100,100);
         // p5.circle(-400,100,100);
@@ -107,7 +107,7 @@ export const Maninderviz = new Visualizer(
             var y = p5.random(0, 75)+(p5.random(0, height*2));
             var r = p5.random(1, 8);
             p5.circle(x, y, r-2);
-            p5.rect(75, 0, h, 4).strokeWeight(1).stroke(p5.random(0, 40),p5.random(0, 200),p5.random(0, 32));
+            p5.rect(75, 0, h, 4).strokeWeight(1);
          }
         start += 5;
           // for (let i = 0; i < values.length; i++) {
