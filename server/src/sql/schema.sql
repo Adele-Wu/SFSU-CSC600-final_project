@@ -34,3 +34,12 @@ VALUES (6, 'Peaches', 'Justin Bieber', 'Justice', 'D4 D4 D4 D4 D4 D4 C4 E4 C4 A3
 
 INSERT INTO songs (id, song_title, artist, album, notes) 
 VALUES (7, 'Come Get Her', 'Rae Sremmurd', 'SremmLife', 'E3 A4 B4 C4 E3 E3 F3 F3 F3 E3 D4 E3 E3 A4 B4 C4 E3 E3 F3 F3 F3 E3 D4 E3');
+
+INSERT INTO songs (id, song_title, artist, album, notes) 
+VALUES (8, 'FFVII Victory Fanfare', 'Nobuo Uematsu', 'FF VII', 'C4 C4 C4 C4 A3 B3 C4 B3 C4');
+
+INSERT INTO songs (id, song_title, artist, album, notes) 
+VALUES (9, 'For River Johnnys Version', 'Kan R Gao', 'To the Moon', 'E4 F4 E4 F4 E4 F4 E4 F4 E4 F4 E4 F4 E4 F4 E4 F4 E4 F4 E4 F4 E4 F4 E4 F4 E4 F4 E4 D4 E4 F4 G4 F4');
+
+INSERT INTO songs (id, song_title, artist, album, notes) 
+VALUES (10, 'Spider Dance', 'Toby Fox', 'UNDERTALE', 'F6 C6 A5 F5 B5 Bb5 Bb5 A5 E5 F5 C6 B5 A5 B5 C6 E5 F5');
