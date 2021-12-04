@@ -43,3 +43,6 @@ VALUES (9, 'For River Johnnys Version', 'Kan R Gao', 'To the Moon', 'E4 F4 E4 F4
 
 INSERT INTO songs (id, song_title, artist, album, notes) 
 VALUES (10, 'Spider Dance', 'Toby Fox', 'UNDERTALE', 'F6 C6 A5 F5 B5 Bb5 Bb5 A5 E5 F5 C6 B5 A5 B5 C6 E5 F5');
+
+INSERT INTO songs (id, song_title, artist, album, notes) 
+VALUES (11, 'Imperial March', 'John Williams', 'The Empire Strikes Back', 'A5 A5 A5 F5 C6 A5 F5 C6 A5');
