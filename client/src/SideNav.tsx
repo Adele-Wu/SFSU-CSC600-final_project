@@ -15,6 +15,8 @@ import { AppState } from './State';
 import { Instrument } from './Instruments';
 import { Visualizer } from './Visualizers';
 
+import Search from './search';
+
 
 /** ------------------------------------------------------------------------ **
  * All the components in the side navigation.
@@ -112,33 +114,69 @@ function SearchSongs({ state, dispatch }: SideNavProps): JSX.Element {
   )
 }
 
+const { search } = window.location;
+const query = new URLSearchParams(search).get('s');
+
 function Songs({ state, dispatch }: SideNavProps): JSX.Element {
   const songs: List<any> = state.get('songs', List());
-  return (
-    <Section title="Playlist">
-      {songs.map(song => (
-        <div
-          key={song.get('id')}
-          className="f6 pointer underline items-center no-underline i dim"
-          onClick={() =>
-            dispatch(new DispatchAction('PLAY_SONG', { id: song.get('id') }))
+  if (!query) {
+    return (
+      <Section title="Playlist">
+        {songs.map(song => (
+          <div
+            key={song.get('id')}
+            className="f6 pointer underline items-center no-underline i dim"
+            onClick={() =>
+              dispatch(new DispatchAction('PLAY_SONG', { id: song.get('id') }))
+            }
+          >
+            <Music20 className="mr1" />
+            {song.get('songTitle')}
+
+            <div className="gray ml4">
+              {song.get('artist')}
+            </div>
+
+            <div className="gray ml4 f7">
+              {song.get('album')}
+            </div>
+
+          </div>
+        ))}
+      </Section>
+    );
+  } else {
+    return (
+      <Section title="Playlist">
+        {songs.filter(song => {
+          if (song.get('songTitle') === query) {
+            return song
           }
-        >
-          <Music20 className="mr1" />
-          {song.get('songTitle')}
+        })
+          .map(song => (
+            <div
+              key={song.get('id')}
+              className="f6 pointer underline flex items-center no-underline i dim"
+              onClick={() =>
+                dispatch(new DispatchAction('PLAY_SONG', { id: song.get('id') }))
+              }
+            >
+              <Music20 className="mr1" />
+              {song.get('songTitle')}
 
-          <div className="gray ml4">
-            {song.get('artist')}
-          </div>
+              <div className="gray ml4">
+                {song.get('artist')}
+              </div>
 
-          <div className="gray ml4 f7">
-            {song.get('album')}
-          </div>
-          
-        </div>
-      ))}
-    </Section>
-  );
+              <div className="gray ml4 f7">
+                {song.get('album')}
+              </div>
+
+            </div>
+          ))}
+      </Section>
+    );
+  }
 }
 
 export function SideNav({ state, dispatch }: SideNavProps): JSX.Element {
@@ -150,7 +188,8 @@ export function SideNav({ state, dispatch }: SideNavProps): JSX.Element {
       <div className="flex-auto">
         <Instruments state={state} dispatch={dispatch} />
         <Visualizers state={state} dispatch={dispatch} />
-        <SearchSongs state={state} dispatch={dispatch} />
+        <Search />
+        {/* <SearchSongs state={state} dispatch={dispatch} /> */}
         <Songs state={state} dispatch={dispatch} />
       </div>
     </div>

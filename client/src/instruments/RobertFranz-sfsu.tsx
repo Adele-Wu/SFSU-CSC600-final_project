@@ -104,9 +104,9 @@ function TromboneType({ title, onClick, active }: any): JSX.Element {
     return (
         <div
             onClick={onClick}
-            className={classNames('dim pointer ph2 pv1 ba mr2 br1 fw7 bw1', {
-                'b--black black': active,
-                'gray b--light-gray': !active,
+            className={classNames('dim pointer ph2 pv1 ba mr2 br1 fw7 bw1 tromb_oscillator_buttons', {
+                'white tromb_oscillator_buttons_pressed': active,
+                'white b--black': !active,
             })}
         >
             {title}
@@ -118,11 +118,11 @@ function Trombone({ synth, setSynth }: InstrumentProps): JSX.Element {
     const keys = List([
         { note: 'F', idx: 0.5 },
         { note: 'E', idx: 1 },
-        { note: 'Eb', idx: 1.5 },
-        { note: 'D', idx: 2 },
-        { note: 'Db', idx: 2.5 },
-        { note: 'C', idx: 3 },
-        { note: 'B', idx: 3.5 },
+        { note: 'Eb', idx: 1.7 },
+        { note: 'D', idx: 2.15 },
+        { note: 'Db', idx: 2.6 },
+        { note: 'C', idx: 3.3 },
+        { note: 'B', idx: 3.75 },
 
     ]);
 
