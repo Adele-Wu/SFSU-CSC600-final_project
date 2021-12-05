@@ -103,6 +103,7 @@ function Visualizers({ state }: SideNavProps): JSX.Element {
     </Section>
   );
 }
+
 function SearchSongs({ state, dispatch }: SideNavProps): JSX.Element {
   return (
     <div className="flex">
