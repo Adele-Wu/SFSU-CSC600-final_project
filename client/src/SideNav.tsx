@@ -103,6 +103,7 @@ function Visualizers({ state }: SideNavProps): JSX.Element {
     </Section>
   );
 }
+
 function SearchSongs({ state, dispatch }: SideNavProps): JSX.Element {
   return (
     <div className="flex">
@@ -149,7 +150,7 @@ function Songs({ state, dispatch }: SideNavProps): JSX.Element {
     return (
       <Section title="Playlist">
         {songs.filter(song => {
-          if (song.get('songTitle') === query) {
+          if (song.get('songTitle').includes(query)) {
             return song
           }
         })

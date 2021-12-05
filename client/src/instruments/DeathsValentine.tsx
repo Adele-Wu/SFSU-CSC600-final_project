@@ -24,7 +24,7 @@ export function KalimbaKey({
       onMouseDown={() => synth?.triggerAttack(`${note}`)}
       onMouseUp={() => synth?.triggerRelease('+0.25')}
       className={classNames('ba pointer absolute kalimbakeys', {
-        'black bg-light-gray h4': note,
+        'black bg-medium-gray h4': note,
       })}
       style={{
         // CSS
