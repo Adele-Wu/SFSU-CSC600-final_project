@@ -116,14 +116,13 @@ function TromboneType({ title, onClick, active }: any): JSX.Element {
 
 function Trombone({ synth, setSynth }: InstrumentProps): JSX.Element {
     const keys = List([
-        { note: 'F', idx: 0.5 },
-        { note: 'E', idx: 1 },
-        { note: 'Eb', idx: 1.7 },
-        { note: 'D', idx: 2.15 },
-        { note: 'Db', idx: 2.6 },
-        { note: 'C', idx: 3.3 },
-        { note: 'B', idx: 3.75 },
-
+        { note: 'B', idx: 0.5 },
+        { note: 'F', idx: 1 },
+        { note: 'E', idx: 1.7 },
+        { note: 'Eb', idx: 2.15 },
+        { note: 'D', idx: 2.6 },
+        { note: 'Db', idx: 3.3 },
+        { note: 'C', idx: 3.75 },
     ]);
 
     const setOscillator = (newType: Tone.ToneOscillatorType) => {
