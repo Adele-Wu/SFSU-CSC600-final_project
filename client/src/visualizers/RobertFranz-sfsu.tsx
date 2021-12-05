@@ -7,7 +7,7 @@ import { Visualizer } from '../Visualizers';
 
 
 export const RobertVisualizer = new Visualizer(
-    'RobertVisualizer',
+    'RobertFranz-sfsu',
     (p5: P5, analyzer: Tone.Analyser) => {
         const width = window.innerWidth;
         const height = window.innerHeight / 2;

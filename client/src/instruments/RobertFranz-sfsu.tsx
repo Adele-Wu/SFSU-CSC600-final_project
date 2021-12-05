@@ -187,4 +187,4 @@ function Trombone({ synth, setSynth }: InstrumentProps): JSX.Element {
     );
 }
 
-export const TromboneInstrument = new Instrument('Trombone', Trombone);
+export const TromboneInstrument = new Instrument('RobertFranz-sfsu', Trombone);
