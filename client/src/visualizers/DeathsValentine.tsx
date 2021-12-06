@@ -48,10 +48,10 @@ export const DeathsValentine = new Visualizer(
 
         // Creating particles
         if(i % 2 == 0){ // Limits number of particles
-          var x = p5.random(0, (width/25)-10)+(absAmp*p5.random(0, width)-100);
-          var y = p5.random(0, (width/25)-10)+(absAmp*p5.random(0, height)-100);
-          var r = p5.random(-6, 8);
-          p5.circle(x, y, r);
+          var one = p5.random(0, (width/25)-10)+(absAmp*p5.random(0, width)-100);
+          var two = p5.random(0, (width/25)-10)+(absAmp*p5.random(0, height)-100);
+          var three = p5.random(-6, 8);
+          p5.circle(one, two, three);
         }
     }
 
