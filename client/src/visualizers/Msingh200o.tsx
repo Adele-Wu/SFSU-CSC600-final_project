@@ -15,6 +15,7 @@ export const Msingh200o = new Visualizer(
         p5.background(255, 240, 31);
         p5.line(0, height,width, height)
         let space_between_lines = width/200;
+        //Lines at bottom
         for(var m = -1; m<= 1; m +=2){
             for (let i = 0; i < width; i++) {
                 var amplitude = values[i] as number;
@@ -27,6 +28,7 @@ export const Msingh200o = new Visualizer(
         
         p5.beginShape();
         var space = .25
+        //circles that go around
         for (let i = 0; i < 100; i += space) {
             p5.rotate(space);
             p5.circle(400,100,100).fill(225,225,225).stroke(p5.random(0, 225),p5.random(0, 225),p5.random(0, 225));
@@ -77,10 +79,10 @@ export const Msingh200o = new Visualizer(
 
             var my_amp = Math.abs(amplitude)
 
-            var xoff = p5.map(Math.cos(i), -1, 1, 0, 3)
-            var yoff = p5.map(Math.sin(i), -1, 1, 0, 3)
+            var xish = p5.map(Math.cos(i), -1, 1, 0, 3)
+            var yish = p5.map(Math.sin(i), -1, 1, 0, 3)
 
-            var n = p5.noise(xoff + start, yoff + start) * (my_amp * 5)
+            var n = p5.noise(xish + start, yish + start) * (my_amp * 5)
             p5.rotate(space*2);
 
             p5.fill(57, 255, 20).stroke(0,0,0);
