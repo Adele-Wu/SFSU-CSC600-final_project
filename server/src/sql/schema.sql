@@ -48,5 +48,5 @@ INSERT INTO songs (id, song_title, artist, album, notes)
 VALUES (11, 'Imperial March', 'John Williams', 'The Empire Strikes Back', 'A5 A5 A5 F5 C6 A5 F5 C6 A5');
 
 INSERT INTO songs (id, song_title, artist, album, notes)
-VALUES (12, 'US', 'Sidhu', 'SMW', 'G#4 G#4 B4 G#4 B4 C#4 B4 B4 Bb4');
+VALUES (12, 'US', 'Sidhu', 'SMW', 'G#4 G#4 B4 G#4 B4 C#4 B4 B4 Bb4 G#4 G#4 G#4 Bb4 B4 G#4 B4 G#4 B4 C#4');
 
