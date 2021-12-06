@@ -29,12 +29,12 @@ export const DeathsValentine = new Visualizer(
 
     for(var i = 0; i < 360; i += space){
         var amplitude = values[i] as number;
-        var absAmp = Math.abs(amplitude)
+        var absAmp = Math.abs(amplitude); // Getting an absolute number for the amplitude
 
-        var xoff = p5.map(Math.cos(i), -1, 1, 0, 3);
-        var yoff = p5.map(Math.sin(i), -1, 1, 0, 3);
+        var x = p5.map(Math.cos(i), -1, 1, 0, 3);
+        var y = p5.map(Math.sin(i), -1, 1, 0, 3);
 
-        var noise = p5.noise(xoff + start, yoff + start) * (absAmp * 3);
+        var noise = p5.noise(x + start, y + start) * (absAmp * 3);
 
         var h = p5.map(noise, 0, 1, -150, 100);
 
@@ -48,10 +48,10 @@ export const DeathsValentine = new Visualizer(
 
         // Creating particles
         if(i % 2 == 0){ // Limits number of particles
-          var x = p5.random(0, (width/25)-10)+(absAmp*p5.random(0, width)-100);
-          var y = p5.random(0, (width/25)-10)+(absAmp*p5.random(0, height)-100);
-          var r = p5.random(-6, 8);
-          p5.circle(x, y, r);
+          var one = p5.random(0, (width/25)-10)+(absAmp*p5.random(0, width)-100);
+          var two = p5.random(0, (width/25)-10)+(absAmp*p5.random(0, height)-100);
+          var three = p5.random(-6, 8);
+          p5.circle(one, two, three);
         }
     }
 
