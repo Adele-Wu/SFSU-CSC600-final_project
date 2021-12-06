@@ -71,10 +71,10 @@ function Soundboard({ synth, setSynth }: InstrumentProps): JSX.Element {
             return new Tone.MembraneSynth({
                 oscillator: { type: newType } as Tone.OmniOscillatorOptions,
                 "envelope": {
-                    "attack": 0.001,
-                    "decay": 0.4,
-                    "sustain": 0.01,
-                    "release": 1.4,
+                    "attack": 0.05,
+                    "decay": 0.2,
+                    "sustain": 0.1,
+                    "release": 4.4,
                 },
                 "octaves": 10,
                 "pitchDecay": 0.05
