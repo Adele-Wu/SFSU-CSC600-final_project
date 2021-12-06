@@ -6,7 +6,9 @@ import { AMOscillator } from 'tone';
 import { Visualizer } from '../Visualizers';
 
 var start = 1;
-
+const l= 100*Math.random()
+const  g=100*Math.random()
+const  b=100*Math.random()
 export const DeathsValentine = new Visualizer(
   'DeathsValentine',
   (p5: P5, analyzer: Tone.Analyser) => {
@@ -16,7 +18,7 @@ export const DeathsValentine = new Visualizer(
 
     const values = analyzer.getValue();
 
-    p5.background(0);
+    p5.background(l,g,b);
     p5.noStroke()
     p5.noiseDetail(2, 2);
 

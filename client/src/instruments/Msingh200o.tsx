@@ -7,14 +7,12 @@ import { Instrument, InstrumentProps } from '../Instruments';
 /** ------------------------------------------------------------------------ **
  * Contains implementation of components for Drums.
  ** ------------------------------------------------------------------------ */
-
 interface SBKeyProps {
     note: string; // C, Db, D, Eb, E, F, Gb, G, Ab, A, Bb, B
     duration?: string;
     synth?: Tone.Synth; // Contains library code for making sound
     index: number; // give a location for the Drums key
 }
-
 export function SBKeys({
     note,
     synth,
@@ -38,12 +36,11 @@ export function SBKeys({
         </div>
     );
 }
-
 function SBType({ title, onClick,active }: any): JSX.Element {
     return (
         <div
             onClick={onClick}
-            className={classNames('dim pointer ph3 pv2 ba mr1 br1 fw7 bw1', {
+            className={classNames('dim pointer ph3 pv2 ba mr1 br1 fw7 bw1 fish', {
                 'b--black black': active,
                 'black b--white black': !active,
               })}
@@ -52,7 +49,6 @@ function SBType({ title, onClick,active }: any): JSX.Element {
         </div>
     );
 }
-
 function Soundboard({ synth, setSynth }: InstrumentProps): JSX.Element {
     const keys = List([
         { note: 'A1', idx: 0 },
@@ -68,7 +64,6 @@ function Soundboard({ synth, setSynth }: InstrumentProps): JSX.Element {
         { note: 'E3', idx: 10 },
         { note: 'F3', idx: 11 }
     ]);
-
     const setOscillator = (newType: Tone.ToneOscillatorType) => {
         setSynth(oldSynth => {
             oldSynth.disconnect();
@@ -86,15 +81,12 @@ function Soundboard({ synth, setSynth }: InstrumentProps): JSX.Element {
             }).toDestination();
         });
     };
-
-
     const oscillators: List<OscillatorType> = List([
         'sine',
         'sawtooth',
         'square',
         'triangle6',
-        'fmsine',
-        'fmtriangle',
+        'fmtriangle8',
         'amsine',
         'amsawtooth6',
         'amtriangle3',
@@ -102,9 +94,7 @@ function Soundboard({ synth, setSynth }: InstrumentProps): JSX.Element {
 
     return (
         <div 
-
         className={classNames('pv4 lolz')}
-
         >
             <div
             className={classNames('relative dib h4 w-100 parent')}
@@ -122,7 +112,7 @@ function Soundboard({ synth, setSynth }: InstrumentProps): JSX.Element {
                 },
             )}
             </div>
-            <div className={'pl4 pt4 flex mt5'}>
+            <div className={'pl4 pt4 flex mt5 test '}>
                 {oscillators.map(o => (
                     <SBType
                         key={o}
