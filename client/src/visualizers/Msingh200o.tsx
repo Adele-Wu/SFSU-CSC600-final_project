@@ -1,3 +1,7 @@
+/* 
+Resource: https://youtu.be/0YvPgYDR1oM
+*/
+
 // 3rd party library imports
 import P5 from 'p5';
 import * as Tone from 'tone';
@@ -15,6 +19,7 @@ export const Msingh200o = new Visualizer(
         p5.background(255, 240, 31);
         p5.line(0, height,width, height)
         let space_between_lines = width/200;
+        //Lines at bottom
         for(var m = -1; m<= 1; m +=2){
             for (let i = 0; i < width; i++) {
                 var amplitude = values[i] as number;
@@ -27,6 +32,7 @@ export const Msingh200o = new Visualizer(
         
         p5.beginShape();
         var space = .25
+        //circles that go around
         for (let i = 0; i < 100; i += space) {
             p5.rotate(space);
             p5.circle(400,100,100).fill(225,225,225).stroke(p5.random(0, 225),p5.random(0, 225),p5.random(0, 225));
@@ -69,6 +75,7 @@ export const Msingh200o = new Visualizer(
     // },
 
         // ------------------------------------------------------------------------
+       //circle thingy 
         var space = .25
         for (let i = 0; i < 360; i += space) {
 
@@ -76,17 +83,21 @@ export const Msingh200o = new Visualizer(
 
             var my_amp = Math.abs(amplitude)
 
-            var xoff = p5.map(Math.cos(i), -1, 1, 0, 3)
-            var yoff = p5.map(Math.sin(i), -1, 1, 0, 3)
+            var xish = p5.map(Math.cos(i), -1, 1, 0, 3)
+            var yish = p5.map(Math.sin(i), -1, 1, 0, 3)
 
-            var n = p5.noise(xoff + start, yoff + start) * (my_amp * 5)
+            var n = p5.noise(xish + start, yish + start) * (my_amp * 5)
             p5.rotate(space*2);
-            var r = p5.random(0, 100)+(p5.random(50, width*2));
-            var b = p5.random(0, 100);
-            var g=p5.random(0, 225);
+
             p5.fill(57, 255, 20).stroke(0,0,0);
-            p5.rect(75, 0, p5.map(n, 0, 1, 0, 150), 4).strokeWeight(.25)
-           
+
+            p5.rect(75, 0, p5.map(n, 0, 1, 0, 150), 4).strokeWeight(1)
+
+            var x = p5.random(0, 75)+(p5.random(0, width*2));
+            var y = p5.random(0, 75)+(p5.random(0, height*2));
+            var size = p5.random(1, 10);
+            p5.fill(p5.random(0, 225),p5.random(0, 225),p5.random(0, 225))
+            p5.circle(x, y, size);
          }
         start += 5;
         p5.endShape();

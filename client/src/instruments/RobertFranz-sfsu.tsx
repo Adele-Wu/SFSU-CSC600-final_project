@@ -139,11 +139,11 @@ function Trombone({ synth, setSynth }: InstrumentProps): JSX.Element {
     };
 
     const oscillators: List<OscillatorType> = List([
-        'sine',
+        'fmsine',
         'sawtooth',
         'square',
         'triangle',
-        'fmsine',
+        'sine',
         'fmsawtooth',
         'fmtriangle',
         'amsine',

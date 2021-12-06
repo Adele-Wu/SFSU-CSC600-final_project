@@ -23,7 +23,7 @@ export function KalimbaKey({
     <div
       onMouseDown={() => synth?.triggerAttack(`${note}`)}
       onMouseUp={() => synth?.triggerRelease('+0.25')}
-      className={classNames('ba pointer absolute kalimbakeys', {
+      className={classNames('pointer absolute kalimbakeys', {
         'black bg-medium-gray h4': note,
       })}
       style={{
@@ -33,7 +33,7 @@ export function KalimbaKey({
         zIndex: 0,
         width: '.75rem',
         marginLeft: 2,
-        height: 150,
+        height: 200,
       }}
     ></div>
   );
@@ -49,7 +49,7 @@ function KalimbaKeyWithoutJSX({
     {
       onMouseDown: () => synth?.triggerAttack(`${note}`),
       onMouseUp: () => synth?.triggerRelease('+0.25'),
-      className: classNames('ba pointer absolute kalimbakeys', {
+      className: classNames('pointer absolute kalimbakeys', {
         'black bg-white h4': note,
       }),
       style: {
@@ -129,12 +129,8 @@ function Kalimba({ synth, setSynth }: InstrumentProps): JSX.Element {
           }),
         )}
       </div>
-      <div>
-        <p>
-          
-        </p>
-      </div>
-      <div className={'pl4 pt7 flex'}>
+
+      <div className={'pl4 pt7 ml4 flex'}>
         {oscillators.map(o => (
           <KalimbaType
             key={o}
