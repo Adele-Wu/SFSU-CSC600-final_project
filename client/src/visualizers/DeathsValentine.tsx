@@ -21,9 +21,9 @@ export const DeathsValentine = new Visualizer(
     p5.noStroke()
     p5.noiseDetail(2, 2);
 
-    p5.translate(width / 2, height / 2)
+    p5.translate(width / 2, height / 2) // Centering circle
 
-    p5.colorMode(p5.HSB, 360, 100, 100);
+    p5.colorMode(p5.HSB, 360, 100, 100); // Setting color mode to make the colors flash
     
     var space = 1;
 
@@ -39,13 +39,14 @@ export const DeathsValentine = new Visualizer(
         var h = p5.map(noise, 0, 1, -150, 100);
 
         let color = p5.random(0, 360)
-        p5.rotate(space);
+        p5.rotate(space); // Drawing circle
 
-        p5.fill(0,0,0); 
+        p5.fill(0,0,0); // Colors for circle
         p5.stroke(color, color, color);
 
         p5.rect(300, 0, h, 20);
 
+        // Creating particles
         if(i % 2 == 0){ // Limits number of particles
           var x = p5.random(0, (width/25)-10)+(absAmp*p5.random(0, width)-100);
           var y = p5.random(0, (width/25)-10)+(absAmp*p5.random(0, height)-100);
