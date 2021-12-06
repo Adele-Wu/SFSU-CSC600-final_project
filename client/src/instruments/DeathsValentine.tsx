@@ -97,9 +97,9 @@ function Kalimba({ synth, setSynth }: InstrumentProps): JSX.Element {
       return new Tone.Synth({
         oscillator: { type: newType } as Tone.OmniOscillatorOptions,
         "envelope": {
-          attack: .1,
-          sustain: .3,
-          decay: .75,
+          attack: .001,
+          sustain: 2,
+          decay: 100,
           attackCurve: 'ripple',
         }
       }).toDestination();
