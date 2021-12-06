@@ -52,3 +52,6 @@ VALUES (12, 'US', 'Sidhu', 'SMW', 'G#4 G#4 B4 G#4 B4 C#4 B4 B4 Bb4 G#4 G#4 G#4 B
 
 INSERT INTO songs (id, song_title, artist, album, notes)
 VALUES (13, 'Way Back Then', 'Jung Jaeil', 'Squid Game', 'B4 B4 B4 B4 B4 B4 E5 B4 B4 A4 G4 A4 B4');
+
+INSERT INTO songs (id, song_title, artist, album, notes)
+VALUES (14, 'Love Again', 'Dua Lipa', 'Future Nostalgia', 'F#5 C#5 A5 F#5 C#5 A5 F#5 C#5 A5 F#5');
