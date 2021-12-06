@@ -103,14 +103,12 @@ function Drums({ synth, setSynth }: InstrumentProps): JSX.Element {
 
     const oscillators: List<OscillatorType> = List([
         'sine',
-        'sawtooth',
-        'square',
+        'sine5',
         'triangle',
+        'triangle10',
         'fmsine',
-        'fmsawtooth',
         'fmtriangle',
         'amsine',
-        'amsawtooth',
         'amtriangle',
     ]) as List<OscillatorType>;
 
