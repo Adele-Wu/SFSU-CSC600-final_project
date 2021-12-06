@@ -132,8 +132,11 @@ function Trombone({ synth, setSynth }: InstrumentProps): JSX.Element {
             return new Tone.Synth({
                 oscillator: { type: newType } as Tone.OmniOscillatorOptions,
                 "envelope": {
-                    attack: 0.1,
-                }
+                    "attack": 0.001,
+                    "decay": 0.1,
+                    "sustain": 1,
+                    "release": 1.4,
+                },
             }).toDestination();
         });
     };
