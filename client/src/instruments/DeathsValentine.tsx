@@ -68,8 +68,8 @@ function KalimbaType({ title, onClick, active }: any): JSX.Element {
   return (
     <div
       onClick={onClick}
-      className={classNames('dim pointer ph2 pv1 ba mr2 br1 fw7 bw1', {
-        'b--black black': active,
+      className={classNames('dim pointer ph2 pv1 ba mr2 br1 fw7 bw1 KalimbaOscillatorButtons', {
+        'b--black black KalimbaOscillatorButtonsActive': active,
         'gray b--light-gray': !active,
       })}
     >
@@ -104,13 +104,11 @@ function Kalimba({ synth, setSynth }: InstrumentProps): JSX.Element {
     'sine',
     'sine10',
     'amsine10',
-    // 'triangle',
-    // 'fmsine',
-    // 'fmsawtooth',
-    // 'fmtriangle',
-    // 'amsine',
-    // 'amsawtooth',
-    // 'amtriangle',
+    'fmsawtooth3',
+    'sawtooth',
+    'square',
+    'triangle',
+    'amtriangle10',
   ]) as List<OscillatorType>; 
 
   return (
