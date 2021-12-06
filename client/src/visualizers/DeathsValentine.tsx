@@ -1,8 +1,9 @@
-import { CircleDash16 } from '@carbon/icons-react';
+/* 
+Resource: https://youtu.be/0YvPgYDR1oM
+*/
+
 import P5 from 'p5';
 import * as Tone from 'tone';
-import { AMOscillator } from 'tone';
-
 import { Visualizer } from '../Visualizers';
 
 var start = 1;
@@ -22,42 +23,37 @@ export const DeathsValentine = new Visualizer(
     p5.noStroke()
     p5.noiseDetail(2, 2);
 
-    p5.translate(width / 2, height / 2)
+    p5.translate(width / 2, height / 2) // Centering circle
 
-    p5.colorMode(p5.HSB, 360, 100, 100);
+    p5.colorMode(p5.HSB, 360, 100, 100); // Setting color mode to make the colors flash
     
     var space = 1;
 
     for(var i = 0; i < 360; i += space){
         var amplitude = values[i] as number;
-        var absAmp = Math.abs(amplitude)
+        var absAmp = Math.abs(amplitude); // Getting an absolute number for the amplitude
 
-        var xoff = p5.map(Math.cos(i), -1, 1, 0, 3);
-        var yoff = p5.map(Math.sin(i), -1, 1, 0, 3);
+        var x = p5.map(Math.cos(i), -1, 1, 0, 3);
+        var y = p5.map(Math.sin(i), -1, 1, 0, 3);
 
-        var n = p5.noise(xoff + start, yoff + start) * (absAmp * 3);
+        var noise = p5.noise(x + start, y + start) * (absAmp * 3);
 
-        var h = p5.map(n, 0, 1, -150, 100);
-
-        // var r = p5.map(Math.sin(i), -1, 1, 100, 200);
-        // var g = p5.map(h, -150, 150, 0, 150);
-        // var b = p5.map(n, 0, 1, 150, 255);
+        var h = p5.map(noise, 0, 1, -150, 100);
 
         let color = p5.random(0, 360)
-        p5.rotate(space);
+        p5.rotate(space); // Drawing circle
 
-        // p5.fill(r,g,b) 
-
-        p5.fill(0,0,0); 
+        p5.fill(0,0,0); // Colors for circle
         p5.stroke(color, color, color);
 
         p5.rect(300, 0, h, 20);
 
+        // Creating particles
         if(i % 2 == 0){ // Limits number of particles
-          var x = p5.random(0, (width/25)-10)+(absAmp*p5.random(0, width)-100);
-          var y = p5.random(0, (width/25)-10)+(absAmp*p5.random(0, height)-100);
-          var r = p5.random(-6, 8);
-          p5.circle(x, y, r);
+          var one = p5.random(0, (width/25)-10)+(absAmp*p5.random(0, width)-100);
+          var two = p5.random(0, (width/25)-10)+(absAmp*p5.random(0, height)-100);
+          var three = p5.random(-6, 8);
+          p5.circle(one, two, three);
         }
     }
 

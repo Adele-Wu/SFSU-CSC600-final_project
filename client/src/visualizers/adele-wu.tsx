@@ -1,3 +1,7 @@
+/* 
+Resource: https://youtu.be/0YvPgYDR1oM
+*/
+
 // 3rd party library imports
 import P5 from 'p5';
 import * as Tone from 'tone';
@@ -53,7 +57,7 @@ export const AdeleVisualizer = new Visualizer(
       var amplitude = values[i] as number;
       var my_amp = Math.abs(amplitude)
 
-      // handles the movement
+      // gives constant movement
       var xoff = p5.map(Math.cos(i), 0, 1, 0, my_amp * 10)
       var yoff = p5.map(Math.sin(i), 0, 1, 0, my_amp * 10)
       var n = p5.noise(xoff + start, yoff + start) * (my_amp * 5)
